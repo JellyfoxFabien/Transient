@@ -21,20 +21,26 @@ key_action = key_left || key_right || key_jump || key_tp || key_shoot || key_rew
 /// @DnDAction : YoYo Games.Common.Execute_Code
 /// @DnDVersion : 1
 /// @DnDHash : 6142E4DA
-/// @DnDArgument : "code" "/// @description Sprite system$(13_10)$(13_10)if key_action = false {$(13_10)	sprite_index = s_player_idle;$(13_10)}$(13_10)$(13_10)if key_left = true {$(13_10)	sprite_index = s_player_run;$(13_10)	image_xscale = -1;$(13_10)}$(13_10)$(13_10)if key_left = true && key_walk = true {$(13_10)	sprite_index = s_player_walk;$(13_10)	image_xscale = -1;$(13_10)}$(13_10)$(13_10)if key_right = true {$(13_10)	sprite_index = s_player_run;$(13_10)	image_xscale = 1;$(13_10)}$(13_10)$(13_10)if key_right = true && key_walk = true {$(13_10)	sprite_index = s_player_walk;$(13_10)	image_xscale = 1;$(13_10)}"
+/// @DnDArgument : "code" "/// @description Sprite system$(13_10)$(13_10)s_way = image_xscale;$(13_10)$(13_10)if key_action = false {$(13_10)	sprite_index = s_player_idle;$(13_10)}$(13_10)$(13_10)if key_action = false && s_way <= -1 {$(13_10)	sprite_index = s_player_idle_back;$(13_10)}$(13_10)$(13_10)if key_left = true {$(13_10)	sprite_index = s_player_run_back;$(13_10)	image_xscale = -1;$(13_10)}$(13_10)$(13_10)if key_left = true && key_walk = true {$(13_10)	sprite_index = s_player_walk_back;$(13_10)	image_xscale = -1;$(13_10)}$(13_10)$(13_10)if key_right = true {$(13_10)	sprite_index = s_player_run;$(13_10)	image_xscale = 1;$(13_10)}$(13_10)$(13_10)if key_right = true && key_walk = true {$(13_10)	sprite_index = s_player_walk;$(13_10)	image_xscale = 1;$(13_10)}"
 /// @description Sprite system
+
+s_way = image_xscale;
 
 if key_action = false {
 	sprite_index = s_player_idle;
 }
 
+if key_action = false && s_way <= -1 {
+	sprite_index = s_player_idle_back;
+}
+
 if key_left = true {
-	sprite_index = s_player_run;
+	sprite_index = s_player_run_back;
 	image_xscale = -1;
 }
 
 if key_left = true && key_walk = true {
-	sprite_index = s_player_walk;
+	sprite_index = s_player_walk_back;
 	image_xscale = -1;
 }
 
