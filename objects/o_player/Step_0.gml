@@ -1,13 +1,17 @@
 /// @DnDAction : YoYo Games.Common.Execute_Code
 /// @DnDVersion : 1
 /// @DnDHash : 12FFF2AE
-/// @DnDArgument : "code" "///@description Key check variables$(13_10)$(13_10)key_left = keyboard_check(vk_left);$(13_10)key_right = keyboard_check(vk_right);$(13_10)key_jump = keyboard_check(vk_up);$(13_10)key_walk = keyboard_check(vk_shift);"
+/// @DnDArgument : "code" "///@description Key check variables$(13_10)$(13_10)key_left = keyboard_check(vk_left) $(13_10)			|| keyboard_check(ord("Q"));$(13_10)key_right = keyboard_check(vk_right) $(13_10)			|| keyboard_check(ord("D"));$(13_10)key_jump = keyboard_check(vk_up) $(13_10)			|| keyboard_check(ord("Z")) $(13_10)			|| keyboard_check(vk_space);$(13_10)key_walk = keyboard_check(vk_control);"
 ///@description Key check variables
 
-key_left = keyboard_check(vk_left);
-key_right = keyboard_check(vk_right);
-key_jump = keyboard_check(vk_up);
-key_walk = keyboard_check(vk_shift);
+key_left = keyboard_check(vk_left) 
+			|| keyboard_check(ord("Q"));
+key_right = keyboard_check(vk_right) 
+			|| keyboard_check(ord("D"));
+key_jump = keyboard_check(vk_up) 
+			|| keyboard_check(ord("Z")) 
+			|| keyboard_check(vk_space);
+key_walk = keyboard_check(vk_control);
 
 /// @DnDAction : YoYo Games.Mouse & Keyboard.If_Key_Down
 /// @DnDVersion : 1
@@ -55,22 +59,23 @@ if (key_left && key_walk || key_right && key_walk) {
 /// @DnDAction : YoYo Games.Common.Execute_Code
 /// @DnDVersion : 1
 /// @DnDHash : 0895DFA0
-/// @DnDArgument : "code" "///@description Jump$(13_10)$(13_10)vsp = vsp + grv;$(13_10)if place_meeting(x, y+1, o_ground) && key_jump = true {$(13_10)	vsp = -7$(13_10)}"
+/// @DnDArgument : "code" "///@description Jump$(13_10)$(13_10)vsp = vsp + grv;$(13_10)if (place_meeting(x, y+1, o_ground) && key_jump = true $(13_10)|| place_meeting(x, y+1, o_wall) && key_jump = true) {$(13_10)	vsp = -7$(13_10)}"
 ///@description Jump
 
 vsp = vsp + grv;
-if place_meeting(x, y+1, o_ground) && key_jump = true {
+if (place_meeting(x, y+1, o_ground) && key_jump = true 
+|| place_meeting(x, y+1, o_wall) && key_jump = true) {
 	vsp = -7
 }
 
 /// @DnDAction : YoYo Games.Common.Execute_Code
 /// @DnDVersion : 1
 /// @DnDHash : 543AFA2D
-/// @DnDArgument : "code" "/// @description horizontal collision$(13_10)$(13_10)if place_meeting(x+hsp, y, o_wall) {$(13_10)	while (!place_meeting(x+sign(hsp),y, o_wall)) {$(13_10)		x = x + sign(hsp);$(13_10)	}$(13_10)	hsp = 0;$(13_10)}$(13_10)$(13_10)x = x + hsp;"
+/// @DnDArgument : "code" "/// @description horizontal collision$(13_10)$(13_10)if place_meeting(x+hsp, y, o_wall) {$(13_10)	while (!place_meeting(x+sign(hsp),y+1, o_wall)) {$(13_10)		x = x + sign(hsp);$(13_10)	}$(13_10)	hsp = 0;$(13_10)}$(13_10)$(13_10)x = x + hsp;"
 /// @description horizontal collision
 
 if place_meeting(x+hsp, y, o_wall) {
-	while (!place_meeting(x+sign(hsp),y, o_wall)) {
+	while (!place_meeting(x+sign(hsp),y+1, o_wall)) {
 		x = x + sign(hsp);
 	}
 	hsp = 0;

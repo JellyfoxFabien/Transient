@@ -30,9 +30,9 @@ if (!(l236783F7_0 > 0))
 	/// @DnDVersion : 1
 	/// @DnDHash : 3B28E229
 	/// @DnDParent : 236783F7
-	/// @DnDArgument : "key" "vk_shift"
+	/// @DnDArgument : "key" "vk_control"
 	var l3B28E229_0;
-	l3B28E229_0 = keyboard_check(vk_shift);
+	l3B28E229_0 = keyboard_check(vk_control);
 	if (l3B28E229_0)
 	{
 		/// @DnDAction : YoYo Games.Instances.Sprite_Scale
