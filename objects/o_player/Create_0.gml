@@ -1,14 +1,19 @@
-/// @DnDAction : YoYo Games.Common.Variable
+/// @DnDAction : YoYo Games.Common.Execute_Code
 /// @DnDVersion : 1
-/// @DnDHash : 1527DA0B
-/// @DnDInput : 4
-/// @DnDArgument : "expr_2" "0.3"
-/// @DnDArgument : "expr_3" "3"
-/// @DnDArgument : "var" "hsp"
-/// @DnDArgument : "var_1" "vsp"
-/// @DnDArgument : "var_2" "grv"
-/// @DnDArgument : "var_3" "runsp"
+/// @DnDHash : 7A88BCD5
+/// @DnDArgument : "code" "/// @description Player variables$(13_10)$(13_10)hsp = 0;$(13_10)vsp = 0;$(13_10)grv = 0.3;$(13_10)runsp = 3;$(13_10)jumpsp = -7;$(13_10)jumpcd = 60;$(13_10)jumpcan = true;$(13_10)tp = 50;$(13_10)tpcd = 2;$(13_10)tpcan = true$(13_10)tpcharge = 4;$(13_10)tpchargemax = 4;$(13_10)tprec = 30;"
+/// @description Player variables
+
 hsp = 0;
 vsp = 0;
 grv = 0.3;
 runsp = 3;
+jumpsp = -7;
+jumpcd = 60;
+jumpcan = true;
+tp = 50;
+tpcd = 2;
+tpcan = true
+tpcharge = 4;
+tpchargemax = 4;
+tprec = 30;
