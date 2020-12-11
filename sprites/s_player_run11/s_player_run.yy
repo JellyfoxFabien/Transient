@@ -112,6 +112,7 @@
   },
   "layers": [
     {"visible":true,"isLocked":false,"blendMode":0,"opacity":100.0,"displayName":"Layer 1","resourceVersion":"1.0","name":"0582d99b-34f7-4d47-8be1-92806d79c5b2","tags":[],"resourceType":"GMImageLayer",},
+    {"visible":false,"isLocked":true,"blendMode":0,"opacity":100.0,"displayName":"default","resourceVersion":"1.0","name":"c6f16e6c-8014-4f4e-b2d8-e21096e0a536","tags":[],"resourceType":"GMImageLayer",},
   ],
   "parent": {
     "name": "player",

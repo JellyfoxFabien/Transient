@@ -1,6 +1,8 @@
 {
   "resources": [
+    {"id":{"name":"s_player_run11","path":"sprites/s_player_run11/s_player_run11.yy",},"order":8,},
     {"id":{"name":"o_wall","path":"objects/o_wall/o_wall.yy",},"order":1,},
+    {"id":{"name":"s_player_jump","path":"sprites/s_player_jump/s_player_jump.yy",},"order":7,},
     {"id":{"name":"s_player_walk_back","path":"sprites/s_player_walk_back/s_player_walk_back.yy",},"order":6,},
     {"id":{"name":"s_player_walk","path":"sprites/s_player_walk/s_player_walk.yy",},"order":3,},
     {"id":{"name":"s_player_idle_back","path":"sprites/s_player_idle_back/s_player_idle_back.yy",},"order":4,},
