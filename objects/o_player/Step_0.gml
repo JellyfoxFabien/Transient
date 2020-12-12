@@ -118,11 +118,11 @@ y = y + vsp;
 /// @DnDAction : YoYo Games.Common.Execute_Code
 /// @DnDVersion : 1
 /// @DnDHash : 4D65D684
-/// @DnDArgument : "code" "/// @description Teleport$(13_10)$(13_10)$(13_10)if (tpcharge < tpchargemax && alarm[2] != 0) {$(13_10)	alarm[2] = tprec;	$(13_10)}$(13_10)$(13_10)if tpcan == true && tpcharge >= 1 {$(13_10)	if (hsp!=0 && key_tp = true && image_xscale = 1 && !place_meeting(x+tp,y,o_wall)) {$(13_10)		x = x+tp;$(13_10)		alarm[1] = tpcd;$(13_10)		tpcan = false;$(13_10)		tpcharge = tpcharge-1;$(13_10)		alarm[2] = tprec;$(13_10)	}$(13_10)	else if (hsp!=0 && key_tp = true && image_xscale = -1 && !place_meeting(x-tp,y,o_wall)) {$(13_10)		x = x-tp;$(13_10)		alarm[1] = tpcd;$(13_10)		tpcan = false;$(13_10)		tpcharge = tpcharge-1;$(13_10)		alarm[2] = tprec;$(13_10)	}$(13_10)	else if (hsp=0 && vsp != 0 && key_tp = true && !place_meeting(x,y-tp,o_wall || o_ground)) {$(13_10)		alarm[1] = tpcd;$(13_10)		tpcan = false;$(13_10)		tpcharge = tpcharge-1;$(13_10)		alarm[2] = tprec;$(13_10)		grv = 0.1;$(13_10)		tpcd = 1;$(13_10)		alarm[11] = 30;$(13_10)		// tp height variations$(13_10)		$(13_10)		if tpcharge = 4 {$(13_10)			y = y-tp;		$(13_10)		} else if tpcharge = 3 {$(13_10)			y = y-(tp*1.25);$(13_10)		} else if tpcharge = 2 {$(13_10)			y = y-(tp*1.5);$(13_10)		} else if tpcharge = 1 {$(13_10)			y = y-(tp*2);$(13_10)		}$(13_10)		$(13_10)	}$(13_10)}$(13_10)"
+/// @DnDArgument : "code" "/// @description Teleport$(13_10)$(13_10)// tp auto recharge$(13_10)if (tpcharge < tpchargemax && !alarm[2]) {$(13_10)	alarm[2] = tprec;	$(13_10)}$(13_10)$(13_10)if tpcan == true && tpcharge >= 1 {$(13_10)	if (hsp!=0 && key_tp = true && image_xscale = 1 && !place_meeting(x+tp,y,o_wall)) {$(13_10)		x = x+tp;$(13_10)		alarm[1] = tpcd;$(13_10)		tpcan = false;$(13_10)		tpcharge = tpcharge-1;$(13_10)		alarm[2] = tprec;$(13_10)	}$(13_10)	else if (hsp!=0 && key_tp = true && image_xscale = -1 && !place_meeting(x-tp,y,o_wall)) {$(13_10)		x = x-tp;$(13_10)		alarm[1] = tpcd;$(13_10)		tpcan = false;$(13_10)		tpcharge = tpcharge-1;$(13_10)		alarm[2] = tprec;$(13_10)	}$(13_10)	else if (hsp=0 && vsp != 0 && key_tp = true && !place_meeting(x,y-tp,o_wall || o_ground)) {$(13_10)		alarm[1] = tpcd;$(13_10)		tpcan = false;$(13_10)		tpcharge = tpcharge-1;$(13_10)		alarm[2] = tprec;$(13_10)		grv = 0.1;$(13_10)		tpcd = 1;$(13_10)		alarm[11] = 30;$(13_10)		// tp height variations$(13_10)		$(13_10)		if tpcharge = 4 {$(13_10)			y = y-tp;		$(13_10)		} else if tpcharge = 3 {$(13_10)			y = y-(tp*1.25);$(13_10)		} else if tpcharge = 2 {$(13_10)			y = y-(tp*1.5);$(13_10)		} else if tpcharge = 1 {$(13_10)			y = y-(tp*2);$(13_10)		}$(13_10)		$(13_10)	}$(13_10)}$(13_10)"
 /// @description Teleport
 
-
-if (tpcharge < tpchargemax && alarm[2] != 0) {
+// tp auto recharge
+if (tpcharge < tpchargemax && !alarm[2]) {
 	alarm[2] = tprec;	
 }
 
