@@ -1,7 +1,7 @@
 {
   "spriteId": {
-    "name": "s_player_tp",
-    "path": "sprites/s_player_tp/s_player_tp.yy",
+    "name": "s_ui_tp",
+    "path": "sprites/s_ui_tp/s_ui_tp.yy",
   },
   "solid": false,
   "visible": true,

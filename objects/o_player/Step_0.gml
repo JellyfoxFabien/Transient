@@ -85,7 +85,7 @@ if (place_meeting(x, y+1, o_ground) && key_jump = true
 /// @DnDAction : YoYo Games.Common.Execute_Code
 /// @DnDVersion : 1
 /// @DnDHash : 543AFA2D
-/// @DnDArgument : "code" "/// @description Collision$(13_10)$(13_10)// Horizontal$(13_10)if place_meeting(x+hsp, y, o_wall) {$(13_10)	while (!place_meeting(x+sign(hsp),y+1, o_wall)) {$(13_10)		x = x + sign(hsp);$(13_10)	}$(13_10)	hsp = 0;$(13_10)}$(13_10)$(13_10)x = x + hsp;$(13_10)$(13_10)// Vertical$(13_10)/// @description vertical collision$(13_10)$(13_10)if place_meeting(x,y+vsp,o_ground ) {$(13_10)	while (!place_meeting(x,y+sign(vsp), o_ground)) {$(13_10)		y = y + sign(vsp);$(13_10)	}$(13_10)	vsp = 0;$(13_10)} else if place_meeting(x,y+vsp,o_wall) {$(13_10)	while (!place_meeting(x,y+sign(vsp), o_wall)) {$(13_10)		y = y + sign(vsp);$(13_10)	}$(13_10)	vsp = 0;$(13_10)}$(13_10)$(13_10)y = y + vsp;"
+/// @DnDArgument : "code" "/// @description Collision$(13_10)$(13_10)// Horizontal$(13_10)if place_meeting(x+hsp, y, o_wall) {$(13_10)	while (!place_meeting(x+sign(hsp),y+1, o_wall)) {$(13_10)		x = x + sign(hsp);$(13_10)	}$(13_10)	hsp = 0;$(13_10)}$(13_10)$(13_10)x = x + hsp;$(13_10)$(13_10)// Vertical collision$(13_10)$(13_10)if place_meeting(x,y+vsp,o_ground ) {$(13_10)	while (!place_meeting(x,y+sign(vsp), o_ground)) {$(13_10)		y = y + sign(vsp);$(13_10)	}$(13_10)	vsp = 0;$(13_10)} else if place_meeting(x,y+vsp,o_wall) {$(13_10)	while (!place_meeting(x,y+sign(vsp), o_wall)) {$(13_10)		y = y + sign(vsp);$(13_10)	}$(13_10)	vsp = 0;$(13_10)}$(13_10)$(13_10)y = y + vsp;"
 /// @description Collision
 
 // Horizontal
@@ -98,8 +98,7 @@ if place_meeting(x+hsp, y, o_wall) {
 
 x = x + hsp;
 
-// Vertical
-/// @description vertical collision
+// Vertical collision
 
 if place_meeting(x,y+vsp,o_ground ) {
 	while (!place_meeting(x,y+sign(vsp), o_ground)) {
@@ -118,7 +117,7 @@ y = y + vsp;
 /// @DnDAction : YoYo Games.Common.Execute_Code
 /// @DnDVersion : 1
 /// @DnDHash : 4D65D684
-/// @DnDArgument : "code" "/// @description Teleport$(13_10)$(13_10)// tp auto recharge$(13_10)if (tpcharge < tpchargemax && !alarm[2]) {$(13_10)	alarm[2] = tprec;	$(13_10)}$(13_10)$(13_10)if tpcan == true && tpcharge >= 1 {$(13_10)	if (hsp!=0 && key_tp = true && image_xscale = 1 && !place_meeting(x+tp,y,o_wall)) {$(13_10)		x = x+tp;$(13_10)		alarm[1] = tpcd;$(13_10)		tpcan = false;$(13_10)		tpcharge = tpcharge-1;$(13_10)		alarm[2] = tprec;$(13_10)	}$(13_10)	else if (hsp!=0 && key_tp = true && image_xscale = -1 && !place_meeting(x-tp,y,o_wall)) {$(13_10)		x = x-tp;$(13_10)		alarm[1] = tpcd;$(13_10)		tpcan = false;$(13_10)		tpcharge = tpcharge-1;$(13_10)		alarm[2] = tprec;$(13_10)	}$(13_10)	else if (hsp=0 && vsp != 0 && key_tp = true && !place_meeting(x,y-tp,o_wall || o_ground)) {$(13_10)		alarm[1] = tpcd;$(13_10)		tpcan = false;$(13_10)		tpcharge = tpcharge-1;$(13_10)		alarm[2] = tprec;$(13_10)		grv = 0.1;$(13_10)		tpcd = 1;$(13_10)		alarm[11] = 30;$(13_10)		// tp height variations$(13_10)		$(13_10)		if tpcharge = 4 {$(13_10)			y = y-tp;		$(13_10)		} else if tpcharge = 3 {$(13_10)			y = y-(tp*1.25);$(13_10)		} else if tpcharge = 2 {$(13_10)			y = y-(tp*1.5);$(13_10)		} else if tpcharge = 1 {$(13_10)			y = y-(tp*2);$(13_10)		}$(13_10)		$(13_10)	}$(13_10)}$(13_10)"
+/// @DnDArgument : "code" "/// @description Teleport$(13_10)$(13_10)// tp auto recharge$(13_10)if (tpcharge < tpchargemax && !alarm[2]) {$(13_10)	alarm[2] = tprec;	$(13_10)}$(13_10)$(13_10)if tpcan == true && tpcharge >= 1 {$(13_10)	// horizontal teleport$(13_10)	if (hsp!=0 && key_tp = true && image_xscale = 1 && !place_meeting(x+tp,y,o_wall)) {$(13_10)		x = x+tp;$(13_10)		alarm[1] = tpcd;$(13_10)		tpcan = false;$(13_10)		tpcharge = tpcharge-1;$(13_10)		alarm[2] = tprec;$(13_10)		state = "teleport";$(13_10)	}$(13_10)	// horizontal negative teleport$(13_10)	else if (hsp!=0 && key_tp = true && image_xscale = -1 && !place_meeting(x-tp,y,o_wall)) {$(13_10)		x = x-tp;$(13_10)		alarm[1] = tpcd;$(13_10)		tpcan = false;$(13_10)		tpcharge = tpcharge-1;$(13_10)		alarm[2] = tprec;$(13_10)		state = "teleport";$(13_10)	}$(13_10)	// vertical teleport$(13_10)	else if (hsp=0 && vsp != 0 && key_tp = true &! place_meeting(x,y-tp,o_wall || o_ground)) {$(13_10)		alarm[1] = tpcd;$(13_10)		tpcan = false;$(13_10)		tpcharge = tpcharge-1;$(13_10)		alarm[2] = tprec;$(13_10)		grv = 0.1;$(13_10)		tpcd = 1;$(13_10)		alarm[11] = 30;$(13_10)		state = "teleport";$(13_10)		$(13_10)		// tp height variations$(13_10)		if tpcharge = 4 {$(13_10)			y = y-tp;		$(13_10)		} else if tpcharge = 3 {$(13_10)			y = y-(tp*1.25);$(13_10)		} else if tpcharge = 2 {$(13_10)			y = y-(tp*1.5);$(13_10)		} else if tpcharge = 1 {$(13_10)			y = y-(tp*2);$(13_10)		}$(13_10)		$(13_10)	}$(13_10)}$(13_10)"
 /// @description Teleport
 
 // tp auto recharge
@@ -127,21 +126,26 @@ if (tpcharge < tpchargemax && !alarm[2]) {
 }
 
 if tpcan == true && tpcharge >= 1 {
+	// horizontal teleport
 	if (hsp!=0 && key_tp = true && image_xscale = 1 && !place_meeting(x+tp,y,o_wall)) {
 		x = x+tp;
 		alarm[1] = tpcd;
 		tpcan = false;
 		tpcharge = tpcharge-1;
 		alarm[2] = tprec;
+		state = "teleport";
 	}
+	// horizontal negative teleport
 	else if (hsp!=0 && key_tp = true && image_xscale = -1 && !place_meeting(x-tp,y,o_wall)) {
 		x = x-tp;
 		alarm[1] = tpcd;
 		tpcan = false;
 		tpcharge = tpcharge-1;
 		alarm[2] = tprec;
+		state = "teleport";
 	}
-	else if (hsp=0 && vsp != 0 && key_tp = true && !place_meeting(x,y-tp,o_wall || o_ground)) {
+	// vertical teleport
+	else if (hsp=0 && vsp != 0 && key_tp = true &! place_meeting(x,y-tp,o_wall || o_ground)) {
 		alarm[1] = tpcd;
 		tpcan = false;
 		tpcharge = tpcharge-1;
@@ -149,8 +153,9 @@ if tpcan == true && tpcharge >= 1 {
 		grv = 0.1;
 		tpcd = 1;
 		alarm[11] = 30;
-		// tp height variations
+		state = "teleport";
 		
+		// tp height variations
 		if tpcharge = 4 {
 			y = y-tp;		
 		} else if tpcharge = 3 {
@@ -161,5 +166,21 @@ if tpcan == true && tpcharge >= 1 {
 			y = y-(tp*2);
 		}
 		
+	}
+}
+
+/// @DnDAction : YoYo Games.Common.Execute_Code
+/// @DnDVersion : 1
+/// @DnDHash : 363C1A80
+/// @DnDArgument : "code" "/// @description Teleport state$(13_10)$(13_10)if state = "teleport" {$(13_10)	sprite_index = s_player_tp;$(13_10)	if (image_index >= 3) {$(13_10)		sprite_index = s_player_tpend;$(13_10)			if (image_index >=3) {$(13_10)				state = "normal";$(13_10)			}$(13_10)	}$(13_10)}"
+/// @description Teleport state
+
+if state = "teleport" {
+	sprite_index = s_player_tp;
+	if (image_index >= 3) {
+		sprite_index = s_player_tpend;
+			if (image_index >=3) {
+				state = "normal";
+			}
 	}
 }

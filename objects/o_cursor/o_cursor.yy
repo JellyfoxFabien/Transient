@@ -1,7 +1,7 @@
 {
   "spriteId": {
-    "name": "s_cursor",
-    "path": "sprites/s_cursor/s_cursor.yy",
+    "name": "s_ui_cursor",
+    "path": "sprites/s_ui_cursor/s_ui_cursor.yy",
   },
   "solid": false,
   "visible": true,
